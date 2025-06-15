@@ -1,0 +1,98 @@
+# Project Analysis: Multi-tenant API Dashboard Management
+
+This document provides a comprehensive analysis of the `multitenant-api-dashboard-management` project, outlining its purpose, technical stack, application structure, and key components.
+
+## 1. Project Overview
+
+The project is a minimalistic multi-tenant Next.js starter template designed for building dashboard applications. It emphasizes minimal setup and a modular design, allowing users to integrate their own backend and database solutions. It features a landing page, a multi-tenant dashboard with team switching capabilities, and account settings.
+
+## 2. Technical Stack
+
+The application is built using a modern web development stack:
+
+*   **Framework**: Next.js 14 (App Router)
+*   **Language**: TypeScript
+*   **Styling**: Tailwind CSS
+*   **UI Components**: Shadcn UI (built on Radix UI)
+*   **Authentication**: Stack Auth
+*   **Charting**: Recharts (for data visualization in the dashboard)
+
+### Dependencies (from [package.json](cci:7://file:///home/xoid/projects/private/multitenant-api-dashboard-management/package.json:0:0-0:0)):
+
+*   `@radix-ui/react-avatar`
+*   `@radix-ui/react-dialog`
+*   `@radix-ui/react-icons`
+*   `@radix-ui/react-label`
+*   `@radix-ui/react-separator`
+*   `@radix-ui/react-slot`
+*   `@stackframe/stack` (Stack Auth client library)
+*   `class-variance-authority`
+*   `clsx`
+*   `lucide-react` (icon library)
+*   `next`
+*   `next-themes` (for dark mode)
+*   `react`
+*   `react-dom`
+*   `recharts`
+*   `tailwind-merge`
+*   `tailwindcss-animate`
+
+### Development Dependencies:
+
+*   `@types/node`
+*   `@types/react`
+*   `@types/react-dom`
+*   `eslint`
+*   `eslint-config-next`
+*   `postcss`
+*   `tailwindcss`
+*   `typescript`
+
+## 3. Application Structure
+
+The project follows the Next.js App Router convention, organizing routes and components within the `app/` directory.
+
+### `app/` Directory:
+
+*   **`(landing-page)/`**: Contains the public-facing landing page of the application.
+    *   `layout.tsx`: Layout for the landing page.
+    *   `page.tsx`: Main content of the landing page.
+*   **`dashboard/`**: Contains the core multi-tenant dashboard functionality.
+    *   `page.tsx`: Server-side rendered entry point for the dashboard.
+    *   `page-client.tsx`: Client component likely used within `page.tsx` for interactive elements.
+    *   **`[teamId]/`**: A dynamic route segment indicating multi-tenancy, where `teamId` is a parameter for accessing team-specific dashboards.
+*   **`handler/`**: This directory might contain API routes or server-side utility functions related to the application's logic.
+*   **`layout.tsx`**: The root layout for the entire Next.js application.
+*   **`globals.css`**: Global CSS styles for the application.
+*   **`loading.tsx`**: A loading UI component for Suspense boundaries.
+*   **`provider.tsx`**: Likely contains React Context Providers or other global wrappers for the application (e.g., theme provider, auth provider).
+
+## 4. UI Components
+
+The `components/` directory houses reusable UI components, many of which are likely built using Shadcn UI.
+
+*   `color-mode-switcher.tsx`: Component for toggling dark/light mode.
+*   `features.tsx`: Component for displaying product features on the landing page.
+*   `footer.tsx`: Application-wide footer component.
+*   `handler-header.tsx`: Potentially a header component for specific handlers or pages.
+*   `hero.tsx`: Hero section component for the landing page.
+*   `landing-page-header.tsx`: Header component specific to the landing page.
+*   `logo.tsx`: Reusable logo component.
+*   `pricing.tsx`: Component for displaying pricing plans.
+*   `sidebar-layout.tsx`: Layout component for pages with a sidebar (likely used in the dashboard).
+*   **`ui/`**: This sub-directory likely contains the actual Shadcn UI components (e.g., Button, Input, Card, etc.) that are generated or customized for the project.
+
+## 5. Utility Functions
+
+The `lib/` directory contains general utility functions used throughout the application.
+
+*   `utils.ts`: A common place for helper functions, formatting utilities, or other shared logic.
+
+## 6. Getting Started (Summary)
+
+To run this project:
+
+1.  Clone the repository.
+2.  Install dependencies using `npm install` (or `bun install` as `bun.lock` is present).
+3.  Register an account on [Stack Auth](https://stack-auth.com), copy the keys, and paste them into a `.env.local` file. Enable "client team creation" in Stack Auth settings.
+4.  Start the development server with `npm run dev`.
