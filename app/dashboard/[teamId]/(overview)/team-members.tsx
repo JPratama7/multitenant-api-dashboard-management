@@ -50,14 +50,14 @@ export function TeamMembers() {
           <TableRow key={member.id}>
             <TableCell className="flex items-center">
               <Avatar className="h-9 w-9">
-                {/*{member.teamProfile.profileImageUrl && (*/}
-                {/*  <AvatarImage src={member.teamProfile.profileImageUrl} alt="Avatar" />*/}
-                {/*)}*/}
-                {/*<AvatarFallback>*/}
-                {/*  {member.teamProfile.displayName*/}
-                {/*    ? member.teamProfile.displayName.substring(0, 2).toUpperCase()*/}
-                {/*    : 'US'}*/}
-                {/*</AvatarFallback>*/}
+                {member.teamProfile.profileImageUrl && (
+                  <AvatarImage src={member.teamProfile.profileImageUrl} alt="Avatar" />
+                )}
+                <AvatarFallback>
+                  {member.teamProfile.displayName
+                    ? member.teamProfile.displayName.substring(0, 2).toUpperCase()
+                    : 'US'}
+                </AvatarFallback>
               </Avatar>
               <div className="ml-4 space-y-1">
                 <p className="text-sm font-medium leading-none">
