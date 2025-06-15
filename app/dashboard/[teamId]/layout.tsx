@@ -72,6 +72,12 @@ const navigationItems: SidebarItem[] = [
     icon: Settings2,
     type: "item",
   },
+  {
+    name: "Members",
+    href: "/members",
+    icon: Users,
+    type: "item",
+  }
 ];
 
 export default function Layout(props: { children: React.ReactNode }) {

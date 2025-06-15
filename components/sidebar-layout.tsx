@@ -18,6 +18,7 @@ import {
 import { buttonVariants } from "./ui/button";
 import { Separator } from "./ui/separator";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
+import React from "react";
 
 function useSegment(basePath: string) {
   const path = usePathname();
@@ -125,14 +126,13 @@ function HeaderBreadcrumb(props: { items: SidebarItem[], baseBreadcrumb?: Header
     <Breadcrumb>
       <BreadcrumbList>
         {props.baseBreadcrumb?.map((item, index) => (
-          <>
-            <BreadcrumbItem key={index}>
+          <React.Fragment key={`breadcrumb-${index}`}>
+            <BreadcrumbItem>
               <BreadcrumbLink href={item.href}>{item.title}</BreadcrumbLink>
             </BreadcrumbItem>
-            <BreadcrumbSeparator key={`separator-${index}`} />
-          </>
+            <BreadcrumbSeparator />
+          </React.Fragment>
         ))}
-
         <BreadcrumbItem>
           <BreadcrumbPage>{title}</BreadcrumbPage>
         </BreadcrumbItem>

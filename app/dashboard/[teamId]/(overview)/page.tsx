@@ -10,8 +10,6 @@ import {
 } from "@/components/ui/card";
 import { Graph } from "./graph";
 
-import {TeamMembers} from "./team-members";
-
 export const metadata: Metadata = {
   title: "Dashboard",
   description: "Example dashboard app built using the components.",
@@ -146,15 +144,6 @@ export default function DashboardPage() {
               </CardHeader>
               <CardContent>
                 <RecentSales />
-              </CardContent>
-            </Card>
-            <Card className="col-span-3">
-              <CardHeader>
-                <CardTitle>Team Members</CardTitle>
-                <CardDescription>Current team members and their emails</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <TeamMembers />
               </CardContent>
             </Card>
           </div>
