@@ -5,17 +5,34 @@ import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from '@/c
 
 import React from 'react';
 
+import { useState, useEffect } from 'react'
+
 import {useParams} from 'next/navigation';
 
-import {useUser} from '@stackframe/stack';
+import * as stack from '@stackframe/stack';
+
+import { TeamUser } from '@stackframe/stack';
 
 export default function TeamMembersPage() {
     const {teamId} = useParams<{ teamId: string }>();
+    const user = stack.useUser({or:'throw'});
+    const [members, setMembers] = useState<TeamUser[]>([]);
 
-    const user = useUser({or: 'redirect'});
-    const team = React.use(user.getTeam(teamId));
+    useEffect(() => {
 
-    if (!team) {
+        const fetchMembers = async () => {
+            const currentTeam = await user.getTeam(teamId);
+            if (!currentTeam) return;
+
+            const teamMembers = await currentTeam.listUsers();
+            setMembers(teamMembers);
+        };
+
+        fetchMembers();
+
+    }, [teamId, user]);
+
+    if (members.length < 1) {
         return (
             <Table>
                 <TableHeader>
@@ -34,8 +51,6 @@ export default function TeamMembersPage() {
             </Table>
         );
     }
-
-    const members = React.use(team.listUsers());
 
     return (
         <Table>
