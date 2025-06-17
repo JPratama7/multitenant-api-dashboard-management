@@ -1,7 +1,7 @@
 import { StackProvider, StackTheme } from "@stackframe/stack";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { stackServerApp } from "../stack";
+import { stackServerApp } from "@/stack";
 import "./globals.css";
 import { Provider } from "./provider";
 
